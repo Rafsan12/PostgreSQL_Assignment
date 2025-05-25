@@ -52,15 +52,18 @@ SELECT * from sightings
     WHERE location ILIKE '%pass';
 
 -- problem-4
-SELECT r.name,
-  COUNT(s.sighting_id) as total_sightings from rangers r
-    LEFT JOIN sightings s ON r.ranger_id = s.range r_id
-        GROUP BY r.name;
+SELECT r.name, COUNT(s.sighting_id) as total_sightings from rangers as r
+    LEFT JOIN sightings as s ON r.ranger_id = s.ranger_id
+        GROUP BY r.ranger_id, r.name;
 
 -- problem-5
-SELECT s.common_name
-FROM species s
-LEFT JOIN sightings si ON s.species_id = si.species_id
-WHERE si.sighting_id IS NULL;
+SELECT s.common_name from species as s
+    LEFT JOIN sightings as si ON s.species_id = si.species_id
+    WHERE si.sighting_id IS NULL;
+
+-- problem-8
+DELETE from rangers
+WHERE ranger_id NOT IN (SELECT DISTINCT ranger_id from sightings);
+
 
 SELECT * from rangers;
