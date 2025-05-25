@@ -47,6 +47,9 @@ VALUES ('Derek Fox', 'Coastal Plains');
 -- problem-2
 SELECT COUNT(DISTINCT  species_id) as unique_species from sightings
 
+-- problem-3
+SELECT * from sightings
+    WHERE location ILIKE 'pass';
 
 
 
