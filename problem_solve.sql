@@ -59,7 +59,16 @@ SELECT r.name, COUNT(s.sighting_id) as total_sightings from rangers as r
 -- problem-5
 SELECT s.common_name from species as s
     LEFT JOIN sightings as si ON s.species_id = si.species_id
-    WHERE si.sighting_id IS NULL;
+        WHERE si.sighting_id IS NULL;
+
+
+-- problem-6
+SELECT sp.common_name, si.sighting_time, r.name from sightings as si
+    JOIN species as sp ON si.species_id = sp.species_id
+        JOIN rangers as r ON si.ranger_id = r.ranger_id
+            ORDER BY si.sighting_time DESC
+                LIMIT 2;
+
 
 -- problem-8
 DELETE from rangers
