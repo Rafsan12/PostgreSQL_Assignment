@@ -73,7 +73,7 @@ SELECT sp.common_name, si.sighting_time, r.name from sightings as si
 UPDATE species SET conservation_status = 'Historic'
     WHERE discovery_date < '1800-01-01';
 
--- problem-8
+-- problem-9
 DELETE from rangers
     WHERE ranger_id NOT IN (SELECT DISTINCT ranger_id from sightings);
 
