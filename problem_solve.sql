@@ -78,4 +78,4 @@ DELETE from rangers
     WHERE ranger_id NOT IN (SELECT DISTINCT ranger_id from sightings);
 
 
-SELECT * from rangers;
+SELECT * from species;
